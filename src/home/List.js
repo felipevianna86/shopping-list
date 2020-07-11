@@ -19,10 +19,14 @@ const List = (props) => (
       <div className="list-card-body">
         <ListItem
           icon={faShoppingBasket}
-          text="1 remaining item(s)"
+          text={`${props.openedItems} remaining item(s)`}
           size="sm"
         />
-        <ListItem icon={faCheck} text="2 purchased item(s)" size="sm" />
+        <ListItem
+          icon={faCheck}
+          text={`${props.closedItems} purchased item(s)`}
+          size="sm"
+        />
       </div>
     </div>
   </CustomCard>

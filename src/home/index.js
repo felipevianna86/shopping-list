@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTotalList } from '../store/reducers/list';
+import {
+  getTotalList,
+  getClosedItems,
+  getOpenedItems,
+} from '../store/reducers/list';
 
 import './Home.css';
 import NewList from './NewList';
@@ -10,7 +14,12 @@ const Home = (props) => (
   <div className="page-container">
     <NewList />
     {props.list.items.length > 0 && (
-      <List list={props.list.list} total={props.total} />
+      <List
+        list={props.list.list}
+        total={props.total}
+        openedItems={props.openedItems}
+        closedItems={props.closedItems}
+      />
     )}
   </div>
 );
@@ -18,6 +27,8 @@ const Home = (props) => (
 const mapStateToProps = (state) => ({
   list: state.list,
   total: getTotalList(state),
+  openedItems: getOpenedItems(state),
+  closedItems: getClosedItems(state),
 });
 
 export default connect(mapStateToProps, null)(Home);

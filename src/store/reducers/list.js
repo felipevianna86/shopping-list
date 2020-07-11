@@ -55,3 +55,13 @@ export const getTotalList = createSelector(
   (state) => state.list.items,
   (items) => items.reduce((total, item) => total + item.total, 0)
 );
+
+export const getOpenedItems = createSelector(
+  (state) => state.list.items,
+  (items) => items.filter((item) => !item.checked).length
+);
+
+export const getClosedItems = createSelector(
+  (state) => state.list.items,
+  (items) => items.filter((item) => item.checked).length
+);
