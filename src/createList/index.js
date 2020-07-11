@@ -23,6 +23,7 @@ class CreateList extends Component {
             <ListItem
               item={item}
               deleteProduct={this.props.deleteProduct}
+              toggleProduct={this.props.toggleProduct}
               key={item.id}
             />
           ))}
