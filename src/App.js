@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { Provider } from 'react-redux';
+import store from './store';
+import Header from './common/Header';
+import Home from './home';
+import CreateList from './createList';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ff9800',
+    },
+    secondary: {
+      main: '#115293',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <div>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/list" component={CreateList} />
+            </Switch>
+          </div>
+        </Router>
+      </MuiThemeProvider>
+    </Provider>
   );
 }
 
