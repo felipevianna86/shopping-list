@@ -68,6 +68,11 @@ class Form extends Component {
       list
     );
     this.clearState();
+    this.finishUpdate();
+  };
+
+  finishUpdate = () => {
+    this.props.finishUpdate();
   };
 
   clearState = () => {
