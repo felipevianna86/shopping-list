@@ -50,18 +50,38 @@ class Form extends Component {
         showErrors: true,
       });
     } else {
-      this.props.addProduct({ price, product, quantity, unity }, list);
-      this.setState({
-        product: '',
-        quantity: '',
-        unity: '',
-        price: '',
-        showErrors: false,
-      });
+      this.props.form.action === 'new'
+        ? this.addItem(price, product, quantity, unity, list)
+        : this.updateItem(price, product, quantity, unity, list);
     }
   };
 
+  addItem = (price, product, quantity, unity, list) => {
+    this.props.addProduct({ price, product, quantity, unity }, list);
+    this.clearState();
+  };
+
+  updateItem = (price, product, quantity, unity, list) => {
+    const { id, checked } = this.props.form.productToUpdate;
+    this.props.updateProduct(
+      { price, product, quantity, unity, id, checked },
+      list
+    );
+    this.clearState();
+  };
+
+  clearState = () => {
+    this.setState({
+      product: '',
+      quantity: '',
+      unity: '',
+      price: '',
+      showErrors: false,
+    });
+  };
+
   render() {
+    const buttonName = this.props.form.action === 'update' ? 'Update' : 'Add';
     return (
       <form className="form-container">
         <div className="form-row">
@@ -78,7 +98,7 @@ class Form extends Component {
             onClick={this.handleSubmit}
             color="secondary"
           >
-            Add
+            {buttonName}
           </Button>
         </div>
         <div className="form-row">

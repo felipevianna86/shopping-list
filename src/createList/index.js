@@ -13,10 +13,14 @@ class CreateList extends Component {
     this.props.addProduct(product, list);
   };
 
+  updateProduct = (product, list) => {
+    this.props.updateProduct(product, list);
+  };
+
   render() {
     return (
       <div className="page-container">
-        <Form addProduct={this.addProduct} />
+        <Form addProduct={this.addProduct} updateProduct={this.updateProduct} />
 
         <div className="list-items-container">
           {this.props.list.items.map((item) => (

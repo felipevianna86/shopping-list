@@ -32,6 +32,11 @@ export default function list(state = initialState, action) {
         ...state,
         items: toggleItem(state.items, action.productId),
       };
+    case Types.UPDATE_PRODUCT:
+      return {
+        list: action.list,
+        items: updateProduct(state.items, action.product),
+      };
     default:
       return state;
   }
@@ -39,6 +44,15 @@ export default function list(state = initialState, action) {
 
 function getTotalItem(product) {
   return product.price * product.quantity;
+}
+
+function updateProduct(items, product) {
+  const index = items.findIndex((item) => item.id === product.id);
+  return [
+    ...items.slice(0, index),
+    { ...product, total: getTotalItem(product) },
+    ...items.slice(index + 1),
+  ];
 }
 
 function toggleItem(items, productId) {
