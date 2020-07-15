@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { Creators as formActions } from '../store/actions/form';
 
 import { Button, MenuItem, TextField, InputAdornment } from '@material-ui/core';
 const units = ['KG', 'LT', 'UN'];
@@ -12,6 +16,27 @@ class Form extends Component {
     price: '',
     showErrors: false,
   };
+
+  componentDidUpdate(prevState) {
+    if (
+      this.props.form.action === 'update' &&
+      prevState.form.productToUpdate !== this.props.form.productToUpdate
+    ) {
+      const {
+        product,
+        quantity,
+        unity,
+        price,
+      } = this.props.form.productToUpdate;
+      this.setState({
+        product,
+        quantity,
+        unity,
+        price,
+        showErrors: false,
+      });
+    }
+  }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -107,4 +132,11 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapStateToProps = (state) => ({
+  form: state.form,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(formActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
