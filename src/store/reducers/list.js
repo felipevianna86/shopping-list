@@ -1,7 +1,6 @@
 import { Types } from '../actions/list';
 import { createSelector } from 'reselect';
 import uuidv1 from 'uuid/dist/v1';
-import { func } from 'prop-types';
 
 const initialState = {
   list: null,
