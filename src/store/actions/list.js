@@ -3,6 +3,7 @@ export const Types = {
   DELETE_PRODUCT: 'DELETE_PRODUCT',
   TOGGLE_PRODUCT: 'TOGGLE_PRODUCT',
   UPDATE_PRODUCT: 'UPDATE_PRODUCT',
+  NEW_LIST: 'NEW_LIST',
 };
 
 export const Creators = {
@@ -25,5 +26,9 @@ export const Creators = {
     type: Types.UPDATE_PRODUCT,
     product,
     list,
+  }),
+
+  newList: () => ({
+    type: Types.NEW_LIST,
   }),
 };

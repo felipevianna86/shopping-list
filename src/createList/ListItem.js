@@ -7,6 +7,7 @@ import ListItemFooter from './ListItemFooter';
 
 const ListItem = ({ item, deleteProduct, toggleProduct }) => (
   <CustomCard
+    action={() => toggleProduct(item.id)}
     link="#"
     containerClass="list-item"
     footer={<ListItemFooter deleteProduct={deleteProduct} item={item} />}
@@ -17,10 +18,7 @@ const ListItem = ({ item, deleteProduct, toggleProduct }) => (
         <Typography variant="subtitle1" component="h2">
           {item.product}
         </Typography>
-        <Checkbox
-          checked={item.checked}
-          onClick={() => toggleProduct(item.id)}
-        />
+        <Checkbox checked={item.checked} />
       </div>
       <Typography component="p">
         {item.quantity} {item.unity}
