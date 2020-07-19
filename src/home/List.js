@@ -12,7 +12,7 @@ const List = (props) => (
   <CustomCard
     containerClass="list-container"
     footer={<ListFooter total={props.total} />}
-    link="/list"
+    link="/list/edit"
   >
     <div>
       <p className="title">{props.list}</p>

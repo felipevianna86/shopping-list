@@ -29,7 +29,7 @@ function App() {
             <Header />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/list" component={CreateList} />
+              <Route path="/list/:action" component={CreateList} />
             </Switch>
           </div>
         </Router>

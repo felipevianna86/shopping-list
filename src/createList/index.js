@@ -20,7 +20,11 @@ class CreateList extends Component {
   render() {
     return (
       <div className="page-container">
-        <Form addProduct={this.addProduct} updateProduct={this.updateProduct} />
+        <Form
+          addProduct={this.addProduct}
+          updateProduct={this.updateProduct}
+          url={this.props.match.params.action}
+        />
 
         <div className="list-items-container">
           {this.props.list.items.map((item) => (
