@@ -37,6 +37,12 @@ class Form extends Component {
         showErrors: false,
       });
     }
+    if (
+      this.props.form.action === 'new' &&
+      prevState.form.action !== this.props.form.action
+    ) {
+      this.setState({ list: this.props.form.listToUpdate });
+    }
   }
 
   handleChange = (event) => {
@@ -51,15 +57,16 @@ class Form extends Component {
         showErrors: true,
       });
     } else {
-      this.props.form.action === 'new'
-        ? this.addItem(price, product, quantity, unity, list)
-        : this.updateItem(price, product, quantity, unity, list);
+      this.props.form.action === 'update'
+        ? this.updateItem(price, product, quantity, unity, list)
+        : this.addItem(price, product, quantity, unity, list);
     }
   };
 
   addItem = (price, product, quantity, unity, list) => {
     this.props.addProduct({ price, product, quantity, unity }, list);
     this.clearState();
+    this.finishAdd();
   };
 
   updateItem = (price, product, quantity, unity, list) => {
@@ -70,6 +77,10 @@ class Form extends Component {
     );
     this.clearState();
     this.finishUpdate();
+  };
+
+  finishAdd = () => {
+    this.props.finishAdd();
   };
 
   finishUpdate = () => {
@@ -164,7 +175,7 @@ class Form extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   form: state.form,
-  showForm: state.form.action === 'update' || ownProps.url === 'new',
+  showForm: state.form.action || ownProps.url === 'new',
 });
 
 const mapDispatchToProps = (dispatch) =>

@@ -39,7 +39,7 @@ class CreateList extends Component {
             />
           ))}
 
-          {paramsAction === 'edit' && <NewItem />}
+          {paramsAction === 'edit' && <NewItem list={this.props.list.list} />}
         </div>
       </div>
     );

@@ -9,9 +9,15 @@ import CustomCard from '../common/CustomCard';
 import { Creators as FormActions } from '../store/actions/form';
 
 const NewItem = (props) => (
-  <CustomCard link="#" containerClass="list-item">
-    <p className="title">New Product</p>
-    <FontAwesomeIcon icon={faPlusCircle} color="#E4E4E4" size="8x" />
+  <CustomCard
+    link="#"
+    containerClass="list-item"
+    action={() => props.startAdd(props.list)}
+  >
+    <div className="new-item">
+      <p className="title">New Product</p>
+      <FontAwesomeIcon icon={faPlusCircle} color="#E4E4E4" size="8x" />
+    </div>
   </CustomCard>
 );
 

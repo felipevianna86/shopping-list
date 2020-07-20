@@ -4,10 +4,6 @@
   flex-direction: column;
 }
 
-.card-content > svg {
-  margin: auto;
-}
-
 .card-footer {
   height: 40px;
 }
