@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Form from './Form';
 import ListItem from './ListItem';
+import NewItem from './NewItem';
 import { Creators as ListAction } from '../store/actions/list';
 
 import './List.css';
@@ -18,12 +19,13 @@ class CreateList extends Component {
   };
 
   render() {
+    const paramsAction = this.props.match.params.action;
     return (
       <div className="page-container">
         <Form
           addProduct={this.addProduct}
           updateProduct={this.updateProduct}
-          url={this.props.match.params.action}
+          url={paramsAction}
         />
 
         <div className="list-items-container">
@@ -36,6 +38,8 @@ class CreateList extends Component {
               key={item.id}
             />
           ))}
+
+          {paramsAction === 'edit' && <NewItem />}
         </div>
       </div>
     );
