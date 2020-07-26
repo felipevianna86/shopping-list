@@ -13,15 +13,6 @@ export default function list(state = initialState, action) {
       return {
         ...state,
         list: action.list,
-        items: [
-          ...state.items,
-          {
-            ...action.product,
-            total: getTotalItem(action.product),
-            id: uuidv1(),
-            checked: false,
-          },
-        ],
       };
     case Types.DELETE_PRODUCT:
       return {
@@ -41,6 +32,21 @@ export default function list(state = initialState, action) {
       };
     case Types.NEW_LIST:
       return { ...initialState, date: getDate() };
+    case Types.GET_IMAGE_SUCCESS:
+    case Types.GET_IMAGE_FAILURE:
+      return {
+        ...state,
+        item: [
+          state.items,
+          {
+            ...action.product,
+            total: getTotalItem(action.product),
+            id: uuidv1(),
+            checked: false,
+            img: action.img,
+          },
+        ],
+      };
     default:
       return state;
   }

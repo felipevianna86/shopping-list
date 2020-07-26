@@ -4,6 +4,8 @@ export const Types = {
   TOGGLE_PRODUCT: 'TOGGLE_PRODUCT',
   UPDATE_PRODUCT: 'UPDATE_PRODUCT',
   NEW_LIST: 'NEW_LIST',
+  GET_IMAGE_SUCCESS: 'GET_IMAGE_SUCCESS',
+  GET_IMAGE_FAILURE: 'GET_IMAGE_FAILURE',
 };
 
 export const Creators = {
@@ -30,5 +32,17 @@ export const Creators = {
 
   newList: () => ({
     type: Types.NEW_LIST,
+  }),
+
+  getImageSuccess: (product, img) => ({
+    type: Types.GET_IMAGE_SUCCESS,
+    product,
+    img,
+  }),
+
+  getImageFailure: (product, img) => ({
+    type: Types.GET_IMAGE_FAILURE,
+    product,
+    img,
   }),
 };
