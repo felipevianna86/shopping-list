@@ -36,8 +36,8 @@ export default function list(state = initialState, action) {
     case Types.GET_IMAGE_FAILURE:
       return {
         ...state,
-        item: [
-          state.items,
+        items: [
+          ...state.items,
           {
             ...action.product,
             total: getTotalItem(action.product),

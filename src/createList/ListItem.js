@@ -10,10 +10,10 @@ const ListItem = ({ item, deleteProduct, toggleProduct, list }) => (
     action={() => toggleProduct(item.id)}
     link="#"
     containerClass="list-item"
+    image={item.img}
     footer={
       <ListItemFooter deleteProduct={deleteProduct} item={item} list={list} />
     }
-    image="https://s2.glbimg.com/P6Nn4AXYPq-K1Xek4cCKyONYYyA=/e.glbimg.com/og/ed/f/original/2014/01/15/cafe.jpg"
   >
     <div>
       <div className="list-item-header">
