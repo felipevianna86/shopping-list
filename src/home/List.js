@@ -13,6 +13,7 @@ const List = (props) => (
     containerClass="list-container"
     footer={<ListFooter total={props.total} />}
     link="/list/edit"
+    cardClass={props.openedItems > 0 ? 'opened-list' : 'closed-list'}
   >
     <div>
       <p className="title">{props.list}</p>

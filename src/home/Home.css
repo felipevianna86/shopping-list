@@ -8,3 +8,15 @@
 .new-list-container {
   width: 80%;
 }
+
+.home-image {
+  background-image: url(https://img.itdg.com.br/tdg/images/blog/uploads/2020/02/Como-retardar-o-amadurecimento-das-frutas.jpg);
+  height: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.new-list-container > a > div {
+  background-color: rgb(255, 255, 255, 0.8);
+}

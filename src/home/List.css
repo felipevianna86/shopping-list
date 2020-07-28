@@ -3,6 +3,10 @@
   margin: 20px;
 }
 
+.list-container > a > div {
+  background-color: rgb(255, 255, 255, 0.8);
+}
+
 .list-card-item {
   display: flex;
   align-items: center;
